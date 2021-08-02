@@ -10,7 +10,7 @@ export default {
             value: product.value,
             description: product.description,
             promotion: product.promotion,
-            url: `http://10.0.0.182:3333/uploads/${product.image}`,
+            url: `https://vip-back-end.herokuapp.com/uploads/${product.image}`,
 
         };
     },
