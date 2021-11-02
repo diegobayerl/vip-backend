@@ -41,6 +41,11 @@ export class createProducts1615507060530 implements MigrationInterface {
                     type: 'boolean',
                     default: false,
                 },
+                {
+                    name: 'estoque',
+                    type: 'boolean',
+                    default: true,
+                },
             ]
         }));
     }

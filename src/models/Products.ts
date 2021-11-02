@@ -23,5 +23,8 @@ export default class Products {
 
     @Column()
     promotion: boolean;
+
+    @Column()
+    estoque: boolean;
     
 }

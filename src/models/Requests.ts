@@ -60,5 +60,8 @@ export default class Requests {
 
     @Column()
     status: boolean;
+
+    @Column()
+    statusEntrega: string;
 }
 

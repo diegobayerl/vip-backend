@@ -96,6 +96,10 @@ export class createRequest1615552702749 implements MigrationInterface {
                     name: 'status',
                     type: 'boolean',
                     default: true,
+                },
+                {
+                    name: 'statusEntrega',
+                    type: 'varchar',
                 }
             ]
         }))

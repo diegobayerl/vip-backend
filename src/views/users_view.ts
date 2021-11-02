@@ -9,6 +9,7 @@ export default {
             telephone: user.telephone,
             city: user.city,
             bairro: user.bairro,
+            rua: user.rua,
             number: user.number,
             reference: user.reference,
             note: user.note,

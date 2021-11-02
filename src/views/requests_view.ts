@@ -3,7 +3,6 @@ import Requests from '../models/Requests';
 export default {
     render(request: Requests){
         return {
-
             id: request.id,
             nameUser: request.nameUser,
             telephone: request.telephone,
@@ -23,7 +22,7 @@ export default {
             hora: request.hora,
             date: request.dateCreate,
             status: request.status,
-
+            statusEntrega: request.statusEntrega,
         };
     },
 

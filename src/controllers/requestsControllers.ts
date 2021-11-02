@@ -28,6 +28,17 @@ export default {
 
     },
 
+    async showRequestId(request: Request, response: Response) {
+
+        const { id } = request.params;
+
+        const requestsRepository = getRepository(Requests);
+
+        const requests = await requestsRepository.findOne(id);
+
+        return response.json(requestsView.render(requests));
+    },
+
     async update(request: Request, response: Response) {
 
         const { id } = request.params;
@@ -39,6 +50,21 @@ export default {
         });
 
         return response.json({ message: "request fishined"});
+
+    },
+
+    async updateStatus(request: Request, response: Response) {
+
+        const { id } = request.params;
+        const { statusEntrega } = request.body;
+
+        const requestsRepository = getRepository(Requests);
+
+        await requestsRepository.update(id, {
+            statusEntrega
+        });
+
+        return response.json({ message: "update status"});
 
     },
 
@@ -71,6 +97,7 @@ export default {
         const dateCreate = date.toLocaleDateString();
 
         const status = false;
+        const statusEntrega = 'em preparo';
 
         const data = {
             nameUser,
@@ -91,6 +118,7 @@ export default {
             hora,
             dateCreate,
             status,
+            statusEntrega,
         };
 
         const schema = Yup.object().shape({
@@ -111,6 +139,7 @@ export default {
             hora: Yup.string().required(),
             dateCreate: Yup.string().required(),
             status: Yup.boolean().required(),
+            statusEntrega: Yup.string().required(),
         })
 
         await schema.validate(data, {

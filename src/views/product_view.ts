@@ -10,6 +10,7 @@ export default {
             value: product.value,
             description: product.description,
             promotion: product.promotion,
+            estoque: product.estoque,
             url: `http://10.0.0.182:3333/uploads/${product.image}`,
 
         };

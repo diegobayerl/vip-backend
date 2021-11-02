@@ -61,6 +61,25 @@ export default {
 
     },
 
+    async updateStatus(request: Request, response: Response) {
+
+        const { id } = request.params;
+        const { 
+            promotion,
+            estoque,
+         } = request.body;
+
+        const productsRepository = getRepository(Products);
+
+        await productsRepository.update(id, {
+           promotion,
+           estoque,
+        });
+
+        return response.json({ message: "update status"});
+
+    },
+
     async update(request: Request, response: Response) { 
 
         const { id } = request.params;
@@ -73,7 +92,8 @@ export default {
             type,
             value,
             description,
-            promotion
+            promotion, 
+            estoque,
         } = request.body;
 
         const data = {
@@ -83,6 +103,7 @@ export default {
             image,
             description,
             promotion: Boolean(promotion),
+            estoque: Boolean(estoque),
         };
 
         const productRepository = getRepository(Products);
@@ -146,6 +167,8 @@ export default {
             const { filename } = request.file;
 
             const promotion = false;
+            const estoque = false;
+    
             const image = String(filename);
 
             const productsRepository = getRepository(Products);
@@ -156,7 +179,8 @@ export default {
                 value,
                 image,
                 description,
-                promotion
+                promotion,
+                estoque,
             };
 
             const schema = Yup.object().shape({
@@ -166,6 +190,7 @@ export default {
                 description: Yup.string().required(),
                 image: Yup.string().required(),
                 promotion: Yup.boolean().required(),
+                estoque: Yup.boolean().required(),
             });
 
             await schema.validate(data, {
