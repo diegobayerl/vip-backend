@@ -72,8 +72,8 @@ export default {
         const productsRepository = getRepository(Products);
 
         await productsRepository.update(id, {
-           promotion,
-           estoque,
+           promotion: promotion === 'true',
+           estoque: estoque === 'true',
         });
 
         return response.json({ message: "update status"});
@@ -102,8 +102,8 @@ export default {
             value,
             image,
             description,
-            promotion: Boolean(promotion),
-            estoque: Boolean(estoque),
+            promotion: promotion === 'true',
+            estoque: estoque === 'true',
         };
 
         const productRepository = getRepository(Products);
@@ -162,12 +162,12 @@ export default {
             type,
             value,
             description,
-            } = request.body;
+            estoque,
+        } = request.body
 
             const { filename } = request.file;
 
-            const promotion = false;
-            const estoque = false;
+           const promotion = false;
     
             const image = String(filename);
 
@@ -180,7 +180,7 @@ export default {
                 image,
                 description,
                 promotion,
-                estoque,
+                estoque: estoque === 'true',
             };
 
             const schema = Yup.object().shape({
